@@ -1,14 +1,21 @@
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import NoteCreate from './noteCreate';
 import NoteDelete from './noteDelete';
 import NoteView from './noteView';
+import { useRouter } from 'next/router';
 
 const Notes = () => {
-  const { user, error, isLoading } = useUser();
   const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  if (!session) {
+    // router.push('api/auth/signin')
+    return null
+  }
 
   const deleteNote = () => {
     deleteView ? setDeleteView(false) : setDeleteView(true);
@@ -21,23 +28,6 @@ const Notes = () => {
   const createNote = () => {
     createView ? setCreateView(false) : setCreateView(true);
   };
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error</p>;
-  }
-
-  if (!user) {
-    return (
-      <div>
-        <p>You are not a valid user</p>
-        <a href="/api/auth/login"></a>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -73,6 +63,13 @@ const Notes = () => {
             }}
           >
             Delete Note
+          </button>
+        </div>
+        <div>
+          <button
+            onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}
+          >
+            Logout
           </button>
         </div>
       </div>
