@@ -1,10 +1,10 @@
 import { signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
-import AccessDenied from '../components/access-denied';
+import Login from '../components/login';
 import NoteCreate from './noteCreate';
 import NoteDelete from './noteDelete';
 import NoteView from './noteView';
+import Leave from '../components/svgs/Leave.svg'
 
 const Notes = () => {
   const [noteView, setNotesView] = useState(false);
@@ -17,7 +17,7 @@ const Notes = () => {
   }
 
   if (sesh === 'unauthenticated') {
-    return <AccessDenied />;
+    return <Login />;
   }
 
   const deleteNote = () => {
@@ -33,9 +33,18 @@ const Notes = () => {
   };
 
   return (
-    <div>
-      <div className="py-8 flex justify-center">
-        <div className="px-4 font-bold text-xl">
+    <div className='py-10'>
+      <div className="absolute top-0 right-10 py-9">
+          <button
+            onClick={() =>
+              signOut({ callbackUrl: 'http://localhost:3000/logout' })
+            }
+          >
+            <Leave className="w-9" />
+          </button>
+        </div>
+      <div className="flex justify-center">
+        <div className="px-4 font-bold text-2xl">
           <button
             onClick={() => {
               viewNotes();
@@ -46,7 +55,7 @@ const Notes = () => {
             View My Notes
           </button>
         </div>
-        <div className="px-4 font-bold text-xl">
+        <div className="px-4 font-bold text-2xl">
           <button
             onClick={() => {
               createNote();
@@ -57,7 +66,7 @@ const Notes = () => {
             Create Note
           </button>
         </div>
-        <div className="px-4 font-bold text-xl">
+        <div className="px-4 font-bold text-2xl">
           <button
             onClick={() => {
               deleteNote();
@@ -66,15 +75,6 @@ const Notes = () => {
             }}
           >
             Delete Note
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={() =>
-              signOut({ callbackUrl: 'http://localhost:3000/logout' })
-            }
-          >
-            Logout
           </button>
         </div>
       </div>
