@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './login';
+import Notes from './notes';
 
 const index = () => {
   return (
-    <Login></Login>
-  )
+  <Notes></Notes>
+  );
 };
 
 export default index;

@@ -1,20 +1,23 @@
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
+import AccessDenied from '../components/access-denied';
 import NoteCreate from './noteCreate';
 import NoteDelete from './noteDelete';
 import NoteView from './noteView';
-import { useRouter } from 'next/router';
 
 const Notes = () => {
   const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
-  const { data: session } = useSession();
-  const router = useRouter();
+  const { data: session, status: sesh } = useSession();
 
-  if (!session) {
-    // router.push('api/auth/signin')
-    return null
+  if (sesh === 'loading') {
+    return null;
+  }
+
+  if (sesh === 'unauthenticated') {
+    return <AccessDenied />;
   }
 
   const deleteNote = () => {
@@ -67,7 +70,9 @@ const Notes = () => {
         </div>
         <div>
           <button
-            onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}
+            onClick={() =>
+              signOut({ callbackUrl: 'http://localhost:3000/logout' })
+            }
           >
             Logout
           </button>
