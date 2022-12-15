@@ -12,7 +12,7 @@ const Notes = () => {
           <Link
             href="/notes"
             className="mx-auto rounded-full w-max border border-gray-800 px-6 py-3 
-                  font-bold transition hover:bg-gray-500 hover:text-gray-800"
+            font-bold transition hover:bg-gray-500 hover:text-gray-800 text-Lg"
           >
             Home
           </Link>
