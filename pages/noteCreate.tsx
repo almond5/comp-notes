@@ -1,8 +1,10 @@
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 const NoteCreate = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const { data: session, status: sesh } = useSession();
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -12,8 +14,12 @@ const NoteCreate = () => {
     setTitle('');
   };
 
-  const makeQuery = (note: { title: string; body: string }) => {
-    console.log(title);
+  const makeQuery = async (note: { title: string; body: string }) => {
+    const user = await prisma.user.create({
+      data: {
+        email: 'adrian',
+      },
+    });
   };
 
   return (
