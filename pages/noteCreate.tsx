@@ -1,5 +1,6 @@
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
+import prisma from '../lib/prismadb';
 
 const NoteCreate = () => {
   const [title, setTitle] = useState('');
