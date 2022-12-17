@@ -10,17 +10,8 @@ const NoteCreate = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const note = { title, body };
-    makeQuery(note);
     setBody('');
     setTitle('');
-  };
-
-  const makeQuery = async (note: { title: string; body: string }) => {
-    const user = await prisma.user.create({
-      data: {
-        email: 'adrian',
-      },
-    });
   };
 
   return (

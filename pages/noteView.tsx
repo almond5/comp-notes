@@ -1,9 +1,10 @@
 import React from 'react';
 
-const NoteView = () => {
+const NoteView = (props: { notes: any; }) => {
+  const notes = props.notes
   return (
-    <div id="projects" className="flex-col text-center py-24">
-      <div
+    <div className="flex-col text-center py-24">
+      {/* <div
         className="mx-auto max-w-sm text-xl text-left xs:max-w-sm sm:max-w-sm 
         md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-lg"
       ></div>
@@ -51,7 +52,13 @@ const NoteView = () => {
             </a>
           </li>
         </div>
-      </ul>
+      </ul> */}
+
+      <div>
+        {notes.map((note: any) => (
+          <div> {note.id} </div>
+        ))}
+      </div>
     </div>
   );
 };

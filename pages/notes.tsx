@@ -6,11 +6,12 @@ import NoteDelete from './noteDelete';
 import NoteView from './noteView';
 import Leave from '../components/svgs/Leave.svg'
 
-const Notes = () => {
+const Notes = (props: { notes: any; }) => {
   const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
   const { data: session, status: sesh } = useSession();
+  const notes = props.notes
 
   if (sesh === 'loading') {
     return null;
@@ -79,10 +80,10 @@ const Notes = () => {
         </div>
       </div>
       <div className={`${noteView ? '' : 'hidden'}`}>
-        <NoteView></NoteView>
+        <NoteView notes={notes}/>
       </div>
       <div className={`${createView ? '' : 'hidden'}`}>
-        <NoteCreate></NoteCreate>
+      <NoteCreate></NoteCreate>
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
         <NoteDelete></NoteDelete>
