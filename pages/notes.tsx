@@ -4,14 +4,14 @@ import Login from '../components/login';
 import NoteCreate from './noteCreate';
 import NoteDelete from './noteDelete';
 import NoteView from './noteView';
-import Leave from '../components/svgs/Leave.svg'
+import Leave from '../components/svgs/Leave.svg';
 
-const Notes = (props: { notes: any; }) => {
+const Notes = (props: { notes: any }) => {
   const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
   const { data: session, status: sesh } = useSession();
-  const notes = props.notes
+  const notes = props.notes;
 
   if (sesh === 'loading') {
     return null;
@@ -34,16 +34,16 @@ const Notes = (props: { notes: any; }) => {
   };
 
   return (
-    <div className='py-10'>
+    <div className="py-10">
       <div className="absolute top-0 right-10 py-9">
-          <button
-            onClick={() =>
-              signOut({ callbackUrl: 'http://localhost:3000/logout' })
-            }
-          >
-            <Leave className="w-9" />
-          </button>
-        </div>
+        <button
+          onClick={() =>
+            signOut({ callbackUrl: 'http://localhost:3000/logout' })
+          }
+        >
+          <Leave className="w-9" />
+        </button>
+      </div>
       <div className="flex justify-center">
         <div className="px-4 font-bold text-2xl">
           <button
@@ -80,10 +80,10 @@ const Notes = (props: { notes: any; }) => {
         </div>
       </div>
       <div className={`${noteView ? '' : 'hidden'}`}>
-        <NoteView notes={notes}/>
+        <NoteView notes={notes} />
       </div>
       <div className={`${createView ? '' : 'hidden'}`}>
-      <NoteCreate></NoteCreate>
+        <NoteCreate></NoteCreate>
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
         <NoteDelete></NoteDelete>
