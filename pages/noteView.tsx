@@ -1,8 +1,21 @@
+import { useSession } from 'next-auth/react';
 import React from 'react';
+import Login from '../components/login';
 
 const NoteView = (props: { notes: any; }) => {
   const notes = props.notes
+  const { data: session, status: sesh } = useSession();
+
+  if (sesh === 'loading') {
+    return null;
+  }
+
+  if (sesh === 'unauthenticated') {
+    return <Login />;
+  }
+  
   return (
+    
     <div className="flex-col text-center py-24">
       {/* <div
         className="mx-auto max-w-sm text-xl text-left xs:max-w-sm sm:max-w-sm 
@@ -56,7 +69,7 @@ const NoteView = (props: { notes: any; }) => {
 
       <div>
         {notes.map((note: any) => (
-          <div> {note.id} </div>
+          <div> {note.email} </div>
         ))}
       </div>
     </div>

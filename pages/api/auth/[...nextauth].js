@@ -17,8 +17,9 @@ export default NextAuth({
       scope: 'read:user',
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      scope: 'read:user',
     }),
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.

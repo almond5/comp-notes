@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import Notes from './notes';
 import { User } from '@prisma/client';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import Login from '../components/login';
 import prisma from '../lib/prismadb';
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context :any) {
+  const session = await getSession(context)
+  
   const user = await prisma.user.findMany({
     where: {
-      // email: session?.user?.email
+      email: session?.user?.email
     }
   });
   return {
@@ -17,6 +19,7 @@ export async function getServerSideProps() {
     },
   };
 }
+
 
 const index = ({ user }: { user: any }) => {
   const [notes, setNotes] = useState<User[]>(user);
