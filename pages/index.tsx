@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
-import { PrismaClient, User, Prisma } from '@prisma/client';
 import Notes from './notes';
-const prisma = new PrismaClient();
+import { User } from '@prisma/client';
+import { useSession } from 'next-auth/react';
+import Login from '../components/login';
+import prisma from '../lib/prismadb';
 
 export async function getServerSideProps() {
-  const contacts: User[] = await prisma.user.findMany();
+  const user = await prisma.user.findMany({
+    where: {
+      // email: session?.user?.email
+    }
+  });
   return {
     props: {
-      initialContacts: contacts,
+      user: user
     },
   };
 }
 
-const index = ({ initialContacts }: { initialContacts: any }) => {
-  // const [contacts, setContacts] = useState<User[]>(initialContacts);
-  const [notes, setNotes] = useState<User[]>(initialContacts);
-  return (
-    <Notes notes={notes} />
-    // <div>{contacts.map((c, i: number) => c.id)}</div>
-  );
+const index = ({ user }: { user: any }) => {
+  const [notes, setNotes] = useState<User[]>(user);
+  const { data: session, status: sesh } = useSession();
+
+  if (sesh === 'loading') {
+    return null;
+  }
+
+  if (sesh === 'unauthenticated') {
+    return <Login />;
+  }
+
+  return <Notes notes={notes} />;
 };
 
 export default index;
