@@ -59,11 +59,12 @@ model VerificationToken {
 }
 
 model Note {
-  id     String  @id @default(uuid())
-  note   String  @db.Text
-  title  String  @db.Text
-  userId String  
-  user   User    @relation(fields: [userId], references: [id])
+  id     String   @id @default(uuid())
+  note   String   @db.Text
+  title  String   @db.Text
+  userId String
+  user   User     @relation(fields: [userId], references: [id])
+  date   DateTime @db.Date
 
   @@index([userId])
 }

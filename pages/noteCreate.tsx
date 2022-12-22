@@ -1,17 +1,17 @@
-import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import prisma from '../lib/prismadb';
 
 const NoteCreate = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const { data: session, status: sesh } = useSession();
+  const [date, setDate] = useState('');
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const note = { title, body };
+    const note = { date, title, body };
+    await newNote(note)
     setBody('');
     setTitle('');
+    setDate('')
   };
 
   return (
@@ -37,7 +37,7 @@ const NoteCreate = () => {
             <div>
               <textarea
                 value={body}
-                onChange={(e) => setBody(e.target.value)}
+                onChange={(e) => [setBody(e.target.value), setDate(new Date().toUTCString)]}
                 required
                 rows={10}
                 cols={50}
@@ -60,3 +60,16 @@ const NoteCreate = () => {
 };
 
 export default NoteCreate;
+
+async function newNote(note: { date: string, title: string; body: string; }) {
+  const response = await fetch('/api/notes', {
+    method: 'POST',
+    body: JSON.stringify(note),
+  });
+
+  if (!response.ok) {
+    throw new Error();
+  }
+
+  return await response.json();
+}

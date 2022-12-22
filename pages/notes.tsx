@@ -10,7 +10,7 @@ const Notes = (props: { notes: any }) => {
   const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
-  const { data: session, status: sesh } = useSession();
+  const { status: sesh } = useSession();
   const notes = props.notes;
 
   if (sesh === 'loading') {
