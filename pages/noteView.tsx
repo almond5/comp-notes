@@ -14,7 +14,7 @@ const NoteView = (props: { notes: any }) => {
     return <Login />;
   }
 
-  if (notes === null || notes.length === 0)
+  if (notes === null || notes === undefined || notes.length === 0)
     return (
       <div className="mb-4 text-lg font-bold flex-col text-center py-24">
         You have no notes!
@@ -33,7 +33,7 @@ const NoteView = (props: { notes: any }) => {
             p-7 transition-transform hover:-translate-y-2 rounded-lg"
             >
               <a>
-                <div className="text-right break-all">12/12/2022</div>
+                <div className="text-right break-all">{note.date}</div>
                 <div className="mb-1 text-lg font-bold">{note.title}</div>
                 <p className="mb-4 text-md text-left break-all">{note.note}</p>
               </a>
