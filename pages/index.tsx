@@ -40,7 +40,7 @@ export async function getServerSideProps(context: any) {
 
 const index = ({ notesFromDB }: { notesFromDB: any }) => {
   const [notes] = useState<Note[]>(notesFromDB);
-  const { status: sesh } = useSession();
+  const { status: sesh, data } = useSession();
 
   if (sesh === 'loading') {
     return null;

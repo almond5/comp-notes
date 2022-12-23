@@ -1,12 +1,38 @@
+import { Session } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 const NoteCreate = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const { data: session } = useSession();
+
+  const submitNote = async (note: {
+    title: string;
+    body: string;
+    user:
+      | {
+          name?: string | null | undefined;
+          email?: string | null | undefined;
+          image?: string | null | undefined;
+        }
+      | undefined;
+  }) => {
+    const response = await fetch('/api/notes', {
+      method: 'POST',
+      body: JSON.stringify(note),
+    });
+
+    const lol = await response.json();
+    console.log(lol);
+  };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    const user = session?.user;
+    const note = { title, body, user };
+    submitNote(note);
+    window.location.reload()
     setBody('');
     setTitle('');
   };

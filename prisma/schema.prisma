@@ -22,11 +22,11 @@ model User {
 
 model Note {
   id     String   @id @default(uuid())
-  note   String   @db.Text
-  title  String   @db.Text
-  userId String
+  note   String?   @db.Text
+  title  String?   @db.Text
+  userId String   
   user   User     @relation(fields: [userId], references: [id])
-  date   String   
+  date   String?
 
   @@index([userId])
 }
