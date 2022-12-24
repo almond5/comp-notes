@@ -23,8 +23,8 @@ const NoteCreate = () => {
       body: JSON.stringify(note),
     });
 
-    const lol = await response.json();
-    console.log(lol);
+    const data = await response.json();
+    console.log(data);
   };
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -32,7 +32,7 @@ const NoteCreate = () => {
     const user = session?.user;
     const note = { title, body, user };
     submitNote(note);
-    window.location.reload()
+    window.location.reload();
     setBody('');
     setTitle('');
   };
