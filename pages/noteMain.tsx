@@ -86,7 +86,7 @@ const Notes = (props: { notes: any }) => {
         <NoteCreate></NoteCreate>
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
-        <NoteDelete></NoteDelete>
+        <NoteDelete notes={notes} />
       </div>
     </div>
   );
