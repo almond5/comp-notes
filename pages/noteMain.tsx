@@ -1,9 +1,9 @@
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import Login from '../components/login';
-import NoteCreate from './noteCreate';
-import NoteDelete from './noteDelete';
-import NoteView from './noteView';
+import NoteCreate from '../components/noteCreate';
+import NoteDelete from '../components/noteDelete';
+import NoteView from '../components/noteView';
 import Leave from '../components/svgs/Leave.svg';
 
 const Notes = (props: { notes: any }) => {
