@@ -37,6 +37,7 @@ const Notes = (props: { notes: any }) => {
     <div className="py-10">
       <div className="absolute top-0 right-10 py-9">
         <button
+          className="rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg"
           onClick={() =>
             signOut({ callbackUrl: 'http://localhost:3000/logout' })
           }
@@ -52,6 +53,11 @@ const Notes = (props: { notes: any }) => {
               setCreateView(false);
               setDeleteView(false);
             }}
+            className={`${
+              !noteView
+                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
+                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
+            }`}
           >
             View My Notes
           </button>
@@ -63,6 +69,11 @@ const Notes = (props: { notes: any }) => {
               setNotesView(false);
               setDeleteView(false);
             }}
+            className={`${
+              !createView
+                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
+                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
+            }`}
           >
             Create Note
           </button>
@@ -74,6 +85,11 @@ const Notes = (props: { notes: any }) => {
               setNotesView(false);
               setCreateView(false);
             }}
+            className={`${
+              !deleteView
+                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
+                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
+            }`}
           >
             Delete Note
           </button>
