@@ -1,9 +1,14 @@
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import React, { useState } from 'react';
 import Login from './login';
 
 const NoteView = (props: { notes: any }) => {
   const { status: sesh } = useSession();
+  const [title, setTitle] = useState(false)
+  const [date, setDate] = useState(false)
+  const [ascending, setAscending] = useState(false)
+  const [descending, setDescending] = useState(false)
+
   const notes = props.notes;
 
   if (sesh === 'loading') {
@@ -27,11 +32,23 @@ const NoteView = (props: { notes: any }) => {
           className="top-[11rem] absolute text-top h-[11rem] outline bg-stone-50
             p-8 rounded-lg"
         >
-          <div className="font-bold">Sort by:</div>
-          <button className="flex flex-col">Title</button>
-          <button className="flex flex-col">Date</button>
-          <button className="flex flex-col">Ascending</button>
-          <button className="flex flex-col">Descending</button>
+          <div className="font-bold">
+            Sort by:
+            <div className="flex flex-col checkbox-wrapper">
+              <label>
+                <input type="checkbox" /> Title
+              </label>
+              <label>
+                <input type="checkbox" /> Date
+              </label>
+              <label>
+                <input type="checkbox" /> Ascending
+              </label>
+              <label>
+                <input type="checkbox" /> Descending
+              </label>
+            </div>
+          </div>
         </div>
         <div
           className="flex-col text-center py-24 mx-auto max-w-sm xs:max-w-sm sm:max-w-md 
