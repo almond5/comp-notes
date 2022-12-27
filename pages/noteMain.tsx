@@ -21,10 +21,6 @@ const Notes = (props: { notes: any }) => {
     return <Login />;
   }
 
-  const getState = (state: any) => {
-    console.log(state)
-  }
-
   const deleteNote = () => {
     deleteView ? setDeleteView(false) : setDeleteView(true);
   };
@@ -103,7 +99,7 @@ const Notes = (props: { notes: any }) => {
         <NoteView notes={notes} />
       </div>
       <div className={`${createView ? '' : 'hidden'}`}>
-        <NoteCreate state={getState} />
+        <NoteCreate />
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
         <NoteDelete notes={notes} />
