@@ -1,9 +1,43 @@
-import React from 'react';
+import { useSession } from 'next-auth/react';
 import { FcCheckmark } from 'react-icons/fc';
 import { FcCancel } from 'react-icons/fc';
+import React from 'react';
 
 const DeleteModal = (props: { notes: any }) => {
+  const { data: session } = useSession();
   const note = props.notes;
+  const title = note.title;
+  const body = note.body;
+  const date = note.date
+
+  const handleDelete = async () => {
+    const user = session?.user;
+    const note = { title, body, user, date };
+    deleteNote(note);
+    window.location.reload();
+  };
+
+  const deleteNote = async (note: {
+    title: string;
+    body: string;
+    date: string
+    user:
+      | {
+          name?: string | null | undefined;
+          email?: string | null | undefined;
+          image?: string | null | undefined;
+        }
+      | undefined;
+  }) => {
+    const response = await fetch('/api/noteDelete', {
+      method: 'POST',
+      body: JSON.stringify(note),
+    });
+
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div className="fixed inset-0 flex flex-col justify-center items-center bg-gray-600 bg-opacity-50 z-50 ">
       <div
@@ -14,10 +48,15 @@ const DeleteModal = (props: { notes: any }) => {
           This note will be deleted:
           <div className="py-4 font-bold break-all">{note.title}</div>
         </div>
-        <button className='px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg' onClick={() => {}}>
+        <button
+          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg"
+        >
           <FcCancel style={{ fontSize: '40px' }} />
         </button>
-        <button className='px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg' onClick={() => {}}>
+        <button
+          onClick={() => handleDelete()}
+          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg"
+        >
           <FcCheckmark style={{ fontSize: '40px' }} />
         </button>
       </div>

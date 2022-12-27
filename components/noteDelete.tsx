@@ -7,24 +7,6 @@ const NoteDelete = (props: { notes: any }) => {
   const { status: sesh } = useSession();
   const notes = props.notes;
 
-  const deleteNote = async (note: {
-    user:
-      | {
-          name?: string | null | undefined;
-          email?: string | null | undefined;
-          image?: string | null | undefined;
-        }
-      | undefined;
-  }) => {
-    const response = await fetch('/api/noteDeleteQuery', {
-      method: 'POST',
-      body: JSON.stringify(note),
-    });
-
-    const data = await response.json();
-    console.log(data);
-  };
-
   if (sesh === 'loading') {
     return null;
   }

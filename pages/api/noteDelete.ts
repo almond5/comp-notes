@@ -6,34 +6,28 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
-    const user = JSON.parse(req.body);
-    const newDate = new Date().toLocaleDateString();
+    const {body, title, user, date} = JSON.parse(req.body);
 
-    // // console.log(body)
+    const findUser = await prisma.user.findFirst({
+      where:{
+        email: user.email
+      }
+    })
 
-    // let findUser = await prisma.user.findFirst({
-    //   where:{
-    //     email: user.email
-    //   }
-    // })
+    const note = await prisma.note.findFirst({
+      where: {
+        note: body,
+        userId: findUser?.id,
+        title: title,
+        date: date
+      }
+    });
 
-    // if (findUser === undefined) {
-    //   findUser = await prisma.user.create({
-    //     data: {
-    //       email: user.email,
-    //       name: user.name
-    //     }
-    //   });
-    // }
-
-    // const newNote = await prisma.note.create({
-    //   data: {
-    //     note: body,
-    //     title: title,
-    //     userId: findUser!.id,
-    //     date: newDate,
-    //   },
-    // });
+    const delNote = await prisma.note.delete({
+      where: {
+        id: note?.id
+      }
+    })
 
     res.status(201).json(null)
   } else {

@@ -9,8 +9,6 @@ export default async function handler(
     const {body, title, user} = JSON.parse(req.body);
     const newDate = new Date().toLocaleDateString();
 
-    // console.log(body)
-
     let findUser = await prisma.user.findFirst({
       where:{
         email: user.email
