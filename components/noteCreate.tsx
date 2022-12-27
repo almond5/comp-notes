@@ -35,7 +35,7 @@ const NoteCreate = () => {
     const user = session?.user;
     const note = { title, body, user };
     submitNote(note);
-    await timeout(1000);
+    await timeout(500);
     window.location.reload();
     setBody('');
     setTitle('');

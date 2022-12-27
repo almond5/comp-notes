@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React from 'react';
 import DeleteView from './deleteView';
 import Login from './login';
 
