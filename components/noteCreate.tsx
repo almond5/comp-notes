@@ -26,11 +26,16 @@ const NoteCreate = () => {
     console.log(data);
   };
 
+  const timeout = (delay: number) => {
+    return new Promise((res) => setTimeout(res, delay));
+  };
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const user = session?.user;
     const note = { title, body, user };
     submitNote(note);
+    await timeout(1000);
     window.location.reload();
     setBody('');
     setTitle('');

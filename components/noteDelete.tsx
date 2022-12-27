@@ -24,13 +24,12 @@ const NoteDelete = (props: { notes: any }) => {
   else
     return (
       <>
-        <div></div>
         <div
           className="flex-col text-center py-24 mx-auto max-w-sm xs:max-w-sm sm:max-w-md 
       md:max-w-md lg:max-w-lg xl:max-w-md 2xl:max-w-lg grid gap-6 md:grid-cols-1 lg:grid-cols-1"
         >
           {notes.map((note: any) => (
-            <DeleteView notes={note}></DeleteView>
+            <DeleteView notes={note} ></DeleteView>
           ))}
         </div>
       </>

@@ -25,7 +25,7 @@ export default async function handler(
 
     const delNote = await prisma.note.delete({
       where: {
-        id: note?.id
+        id: note?.id,
       }
     })
 

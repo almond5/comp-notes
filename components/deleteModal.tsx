@@ -1,26 +1,31 @@
 import { useSession } from 'next-auth/react';
 import { FcCheckmark } from 'react-icons/fc';
 import { FcCancel } from 'react-icons/fc';
-import React from 'react';
+import React, { useState } from 'react';
 
-const DeleteModal = (props: { notes: any }) => {
+const DeleteModal = (props: { notes: any}) => {
   const { data: session } = useSession();
   const note = props.notes;
   const title = note.title;
   const body = note.body;
-  const date = note.date
+  const date = note.date;
+
+  const timeout = (delay: number) => {
+    return new Promise((res) => setTimeout(res, delay));
+  };
 
   const handleDelete = async () => {
     const user = session?.user;
     const note = { title, body, user, date };
     deleteNote(note);
+    await timeout(1000);
     window.location.reload();
   };
 
   const deleteNote = async (note: {
     title: string;
     body: string;
-    date: string
+    date: string;
     user:
       | {
           name?: string | null | undefined;
@@ -48,9 +53,7 @@ const DeleteModal = (props: { notes: any }) => {
           This note will be deleted:
           <div className="py-4 font-bold break-all">{note.title}</div>
         </div>
-        <button
-          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg"
-        >
+        <button className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg">
           <FcCancel style={{ fontSize: '40px' }} />
         </button>
         <button

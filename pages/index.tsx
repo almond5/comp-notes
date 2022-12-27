@@ -38,7 +38,7 @@ export async function getServerSideProps(context: any) {
   }
 }
 
-const index = ({ notesFromDB }: { notesFromDB: any }) => {
+const Index = ({ notesFromDB }: { notesFromDB: any }) => {
   const [notes] = useState<Note[]>(notesFromDB);
   const { status: sesh, data } = useSession();
 
@@ -53,4 +53,4 @@ const index = ({ notesFromDB }: { notesFromDB: any }) => {
   return <Notes notes={notes} />;
 };
 
-export default index;
+export default Index;

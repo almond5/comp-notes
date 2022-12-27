@@ -24,8 +24,8 @@ model Note {
   id        String   @id @default(uuid())
   note      String?  @db.Text
   title     String?  @db.Text
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  userId    String?
+  user      User?     @relation(fields: [userId], references: [id])
   date      String?
   // createdAt DateTime @default(now())
   // updatedAt DateTime @updatedAt
