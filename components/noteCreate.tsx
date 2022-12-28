@@ -45,8 +45,8 @@ const NoteCreate = () => {
     <div className="flex-col text-center py-24">
       <form onSubmit={handleSubmit}>
         <div
-          className="mx-auto max-w-sm text-xl text-left xs:max-w-sm sm:max-w-sm 
-        md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-lg"
+          className="mx-auto max-w-md text-xl text-left xs:max-w-md sm:max-w-md 
+        md:max-w-md lg:max-w-md xl:max-w-md 2xl:max-w-md"
         >
           <div className="mb-4 text-lg font-bold">
             Title:
@@ -54,6 +54,7 @@ const NoteCreate = () => {
               maxLength={45}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
               rows={1}
               cols={45}
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -64,12 +65,12 @@ const NoteCreate = () => {
             Note:
             <div>
               <textarea
-                maxLength={600}
+                maxLength={287}
                 value={body}
                 onChange={(e) => [setBody(e.target.value)]}
                 required
-                rows={10}
-                cols={50}
+                rows={7}
+                cols={45}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               ></textarea>{' '}
             </div>

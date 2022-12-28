@@ -1,13 +1,11 @@
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import Login from '../components/login';
-import NoteCreate from '../components/noteCreate';
+import NoteCreate from './noteCreate';
 import NoteDelete from '../components/noteDelete';
-import NoteView from '../components/noteView';
 import Leave from '../components/svgs/Leave.svg';
 
 const Notes = (props: { notes: any }) => {
-  const [noteView, setNotesView] = useState(false);
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
   const { status: sesh } = useSession();
@@ -23,10 +21,6 @@ const Notes = (props: { notes: any }) => {
 
   const deleteNote = () => {
     deleteView ? setDeleteView(false) : setDeleteView(true);
-  };
-
-  const viewNotes = () => {
-    noteView ? setNotesView(false) : setNotesView(true);
   };
 
   const createNote = () => {
@@ -49,24 +43,22 @@ const Notes = (props: { notes: any }) => {
         <div className="px-4 font-bold text-2xl">
           <button
             onClick={() => {
-              viewNotes();
+              deleteNote();
               setCreateView(false);
-              setDeleteView(false);
             }}
             className={`${
-              !noteView
+              !deleteView
                 ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
                 : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
             }`}
           >
-            View My Notes
+            My Notes
           </button>
         </div>
         <div className="px-4 font-bold text-2xl">
           <button
             onClick={() => {
               createNote();
-              setNotesView(false);
               setDeleteView(false);
             }}
             className={`${
@@ -78,25 +70,6 @@ const Notes = (props: { notes: any }) => {
             Create Note
           </button>
         </div>
-        <div className="px-4 font-bold text-2xl">
-          <button
-            onClick={() => {
-              deleteNote();
-              setNotesView(false);
-              setCreateView(false);
-            }}
-            className={`${
-              !deleteView
-                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
-                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
-            }`}
-          >
-            Delete Note
-          </button>
-        </div>
-      </div>
-      <div className={`${noteView ? '' : 'hidden'}`}>
-        <NoteView notes={notes} />
       </div>
       <div className={`${createView ? '' : 'hidden'}`}>
         <NoteCreate />
