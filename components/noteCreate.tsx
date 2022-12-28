@@ -35,7 +35,7 @@ const NoteCreate = () => {
     const user = session?.user;
     const note = { title, body, user };
     submitNote(note);
-    await timeout(500);
+    await timeout(1000);
     window.location.reload();
     setBody('');
     setTitle('');
@@ -75,13 +75,15 @@ const NoteCreate = () => {
             </div>
           </div>
         </div>
-        <div className="py-[12px]">
-          <div
-            className="mx-auto rounded-full w-max border border-gray-800 px-4 py-2 
+        <div className="py-[14px]">
+          <button>
+            <div
+              className="mx-auto rounded-full w-max border-2 border-gray-800 px-3 py-2 
                 font-bold transition hover:bg-gray-500 hover:text-gray-800"
-          >
-            <button>Submit</button>
-          </div>
+            >
+              Submit
+            </div>
+          </button>
         </div>
       </form>
     </div>

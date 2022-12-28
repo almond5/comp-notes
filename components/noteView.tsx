@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from './login';
 
 const NoteView = (props: { notes: any }) => {
@@ -8,8 +8,7 @@ const NoteView = (props: { notes: any }) => {
   const [date, setDate] = useState(false);
   const [ascending, setAscending] = useState(false);
   const [descending, setDescending] = useState(false);
-
-  let notes = props.notes;
+  const [notes, setNotes] = useState(props.notes)
 
   if (sesh === 'loading') {
     return null;
@@ -21,17 +20,14 @@ const NoteView = (props: { notes: any }) => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const numAscending = new Map(
-      [...notes].sort((a, b) => {
-        const nameA = a.title.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.title.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) return -1;
-        else if (nameA > nameB) return 1;
-        else return 0;
-      })
-    );
-    window.location.reload;
-    console.log(numAscending);
+    const numAscending = Array.from(notes).sort((a: any, b: any) => {
+      const nameA = a.title.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.title.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) return -1;
+      else if (nameA > nameB) return 1;
+      else return 0;
+    });
+    setNotes(numAscending)
   };
 
   if (notes === null || notes === undefined || notes.length === 0)

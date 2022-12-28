@@ -8,14 +8,14 @@ export default function Login() {
         <div className="flex flex-col py-12 font-semibold text-3xl">
           Clippy Notes
         </div>
-        <div className="py-[12px]">
+        <div className="py-[10px]">
           <Link
             href="/api/auth/signin"
             onClick={(e) => {
               e.preventDefault();
               signIn();
             }}
-            className="mx-auto rounded-full w-max border border-gray-800 px-6 py-3 
+            className="mx-auto rounded-full w-max border border-gray-800 px-4 py-2 
             font-bold transition hover:bg-gray-500 hover:text-gray-800 text-Lg"
           >
             Sign-in

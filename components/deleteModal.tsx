@@ -18,7 +18,7 @@ const DeleteModal = (props: { notes: any}) => {
     const user = session?.user;
     const note = { title, body, user, date };
     deleteNote(note);
-    await timeout(500);
+    await timeout(1000);
     window.location.reload();
   };
 
