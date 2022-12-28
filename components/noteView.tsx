@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Login from './login';
 
 const NoteView = (props: { notes: any }) => {
@@ -8,7 +8,7 @@ const NoteView = (props: { notes: any }) => {
   const [date, setDate] = useState(false);
   const [ascending, setAscending] = useState(false);
   const [descending, setDescending] = useState(false);
-  const [notes, setNotes] = useState(props.notes)
+  const [notes, setNotes] = useState(props.notes);
 
   if (sesh === 'loading') {
     return null;
@@ -20,14 +20,51 @@ const NoteView = (props: { notes: any }) => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const numAscending = Array.from(notes).sort((a: any, b: any) => {
-      const nameA = a.title.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.title.toUpperCase(); // ignore upper and lowercase
-      if (nameA < nameB) return -1;
-      else if (nameA > nameB) return 1;
-      else return 0;
-    });
-    setNotes(numAscending)
+    if (title) {
+      if (descending) {
+        const notesDescending = Array.from(notes).sort((a: any, b: any) => {
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
+          if (titleA > titleB) return -1;
+          else if (titleA < titleB) return 1;
+          else return 0;
+        });
+
+        setNotes(notesDescending);
+      } else {
+        const notesAscending = Array.from(notes).sort((a: any, b: any) => {
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
+          if (titleA < titleB) return -1;
+          else if (titleA > titleB) return 1;
+          else return 0;
+        });
+
+        setNotes(notesAscending);
+      }
+    } else if (date) {
+      if (descending) {
+        const notesDescending = Array.from(notes).sort((a: any, b: any) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          if (dateA.getTime() > dateB.getTime()) return -1;
+          else if (dateA.getTime() < dateB.getTime()) return 1;
+          else return 0;
+        });
+
+        setNotes(notesDescending);
+      } else {
+        const notesAscending = Array.from(notes).sort((a: any, b: any) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          if (dateA.getTime() < dateB.getTime()) return -1;
+          else if (dateA.getTime() > dateB.getTime()) return 1;
+          else return 0;
+        });
+
+        setNotes(notesAscending);
+      }
+    }
   };
 
   if (notes === null || notes === undefined || notes.length === 0)
@@ -50,16 +87,36 @@ const NoteView = (props: { notes: any }) => {
               className="flex flex-col checkbox-wrapper"
             >
               <label>
-                <input type="checkbox" /> Title
+                <input
+                  disabled={date}
+                  onChange={() => setTitle(!title)}
+                  type="checkbox"
+                />{' '}
+                Title
               </label>
               <label>
-                <input type="checkbox" /> Date
+                <input
+                  disabled={title}
+                  onChange={() => setDate(!date)}
+                  type="checkbox"
+                />{' '}
+                Date
               </label>
               <label>
-                <input type="checkbox" /> Ascending
+                <input
+                  disabled={descending}
+                  onChange={() => setAscending(!ascending)}
+                  type="checkbox"
+                />{' '}
+                Ascending
               </label>
               <label>
-                <input type="checkbox" /> Descending
+                <input
+                  disabled={ascending}
+                  onChange={() => setDescending(!descending)}
+                  type="checkbox"
+                />{' '}
+                Descending
               </label>
               <div className="py-1"></div>
               <button className="font-bold rounded-full px-3 py-1 transition hover:bg-gray-300 text-Lg">
