@@ -3,6 +3,7 @@ import DeleteModal from './deleteModal';
 
 const DeleteView = (props: { notes: any }) => {
   const [deleteView, setDeleteView] = useState(false);
+  const [del, setDeleted] = useState(false)
   const note = props.notes;
 
   return (
@@ -11,9 +12,9 @@ const DeleteView = (props: { notes: any }) => {
         setDeleteView(!deleteView);
       }}
     >
-      <div>
+      <div className={`${del ? 'hidden' : ''}`}>
         <div className={`${deleteView ? '' : 'hidden'}`}>
-          <DeleteModal notes={note} />
+          <DeleteModal notes={note} setDeleted={setDeleted}/>
         </div>
         <div
           className="h-[17rem] outline bg-stone-50

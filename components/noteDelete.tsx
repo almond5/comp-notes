@@ -5,11 +5,11 @@ import Login from './login';
 
 const NoteDelete = (props: { notes: any }) => {
   const { status: sesh } = useSession();
+  const [descending, setDescending] = useState(false);
+  const [ascending, setAscending] = useState(false);
+  const [notes, setNotes] = useState(props.notes);
   const [title, setTitle] = useState(false);
   const [date, setDate] = useState(false);
-  const [ascending, setAscending] = useState(false);
-  const [descending, setDescending] = useState(false);
-  const [notes, setNotes] = useState(props.notes);
 
   if (sesh === 'loading') {
     return null;
@@ -71,7 +71,7 @@ const NoteDelete = (props: { notes: any }) => {
   if (notes === null || notes === undefined || notes.length === 0)
     return (
       <div className="mb-4 text-lg font-bold flex-col text-center py-24">
-        You have no notes to delete!
+        You have no notes!
       </div>
     );
   else

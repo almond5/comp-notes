@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react';
 import { FcCheckmark } from 'react-icons/fc';
 import { FcCancel } from 'react-icons/fc';
-import React, { useState } from 'react';
+import React from 'react';
 
-const DeleteModal = (props: { notes: any}) => {
+const DeleteModal = (props: { notes: any, setDeleted: any}) => {
   const { data: session } = useSession();
   const note = props.notes;
   const title = note.title;
@@ -19,7 +19,7 @@ const DeleteModal = (props: { notes: any}) => {
     const note = { title, body, user, date };
     deleteNote(note);
     await timeout(1000);
-    window.location.reload();
+    props.setDeleted(true)
   };
 
   const deleteNote = async (note: {

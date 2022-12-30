@@ -1,7 +1,7 @@
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import Login from '../components/login';
-import NoteCreate from './noteCreate';
+import NoteCreate from '../components/noteCreate';
 import NoteDelete from '../components/noteDelete';
 import Leave from '../components/svgs/Leave.svg';
 
