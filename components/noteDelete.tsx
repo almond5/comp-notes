@@ -69,7 +69,7 @@ const NoteDelete = (props: { notes: any }) => {
     }
   };
 
-  if (notes === null || notes === undefined || notes.length === 0)
+  if (notes === null || notes === undefined || notes.length === 0 || count === notes.length)
     return (
       <div className="mb-4 text-lg font-bold flex-col text-center py-24">
         You have no notes!
