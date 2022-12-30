@@ -8,6 +8,7 @@ import Leave from '../components/svgs/Leave.svg';
 const Notes = (props: { notes: any }) => {
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
+  const [created, setCreated] = useState(false);
   const { status: sesh } = useSession();
   const notes = props.notes;
 
@@ -45,6 +46,7 @@ const Notes = (props: { notes: any }) => {
             onClick={() => {
               deleteNote();
               setCreateView(false);
+              setCreated(false)
             }}
             className={`${
               !deleteView
@@ -71,8 +73,8 @@ const Notes = (props: { notes: any }) => {
           </button>
         </div>
       </div>
-      <div className={`${createView ? '' : 'hidden'}`}>
-        <NoteCreate />
+      <div className={`${createView || created ? '' : 'hidden'}`}>
+        <NoteCreate setCreated={setCreated}/>
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
         <NoteDelete notes={notes} />

@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
-const NoteCreate = () => {
+const NoteCreate = (props: { setCreated: any }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const { data: session } = useSession();
@@ -36,7 +36,7 @@ const NoteCreate = () => {
     const note = { title, body, user };
     submitNote(note);
     await timeout(1000);
-    window.location.reload();
+    props.setCreated(true);
     setBody('');
     setTitle('');
   };
