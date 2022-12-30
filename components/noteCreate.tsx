@@ -79,7 +79,7 @@ const NoteCreate = () => {
         <div className="py-[14px]">
           <button>
             <div
-              className="mx-auto rounded-full w-max border-2 border-gray-800 px-3 py-2 
+              className="text-lg mx-auto rounded-full w-max border-2 border-gray-800 px-3 py-1 
                 font-bold transition hover:bg-gray-500 hover:text-gray-800"
             >
               Submit

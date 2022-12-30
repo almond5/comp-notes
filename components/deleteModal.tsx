@@ -3,7 +3,7 @@ import { FcCheckmark } from 'react-icons/fc';
 import { FcCancel } from 'react-icons/fc';
 import React from 'react';
 
-const DeleteModal = (props: { notes: any, setDeleted: any}) => {
+const DeleteModal = (props: { notes: any, setDeleted: any, count: any, setCount: any }) => {
   const { data: session } = useSession();
   const note = props.notes;
   const title = note.title;
@@ -20,6 +20,7 @@ const DeleteModal = (props: { notes: any, setDeleted: any}) => {
     deleteNote(note);
     await timeout(1000);
     props.setDeleted(true)
+    props.setCount(props.count + 1)
   };
 
   const deleteNote = async (note: {

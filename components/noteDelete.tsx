@@ -10,6 +10,7 @@ const NoteDelete = (props: { notes: any }) => {
   const [notes, setNotes] = useState(props.notes);
   const [title, setTitle] = useState(false);
   const [date, setDate] = useState(false);
+  const [count, setCount] = useState(0)
 
   if (sesh === 'loading') {
     return null;
@@ -131,7 +132,7 @@ const NoteDelete = (props: { notes: any }) => {
       md:max-w-md lg:max-w-lg xl:max-w-md 2xl:max-w-lg grid gap-6 md:grid-cols-1 lg:grid-cols-1"
         >
           {notes.map((note: any) => (
-            <DeleteView notes={note} ></DeleteView>
+            <DeleteView notes={note} count={count} counter={setCount}></DeleteView>
           ))}
         </div>
       </>

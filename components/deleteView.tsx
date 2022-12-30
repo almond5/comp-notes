@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DeleteModal from './deleteModal';
 
-const DeleteView = (props: { notes: any }) => {
+const DeleteView = (props: { notes: any, count: any, counter: any }) => {
   const [deleteView, setDeleteView] = useState(false);
   const [del, setDeleted] = useState(false)
   const note = props.notes;
@@ -14,7 +14,7 @@ const DeleteView = (props: { notes: any }) => {
     >
       <div className={`${del ? 'hidden' : ''}`}>
         <div className={`${deleteView ? '' : 'hidden'}`}>
-          <DeleteModal notes={note} setDeleted={setDeleted}/>
+          <DeleteModal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
         </div>
         <div
           className="h-[17rem] outline bg-stone-50

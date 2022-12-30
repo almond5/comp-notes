@@ -8,10 +8,10 @@ const Notes = () => {
       <div className="flex flex-col py-12 font-semibold text-3xl">
           You have been logged out!
         </div>
-        <div className="py-[12px]">
+        <div className="py-[8px]">
           <Link
             href="/"
-            className="mx-auto rounded-full w-max border border-gray-800 px-6 py-3 
+            className="text-lg mx-auto rounded-full w-max border border-gray-800 px-3 py-2 
             font-bold transition hover:bg-gray-500 hover:text-gray-800 text-Lg"
           >
             Home
