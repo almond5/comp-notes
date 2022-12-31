@@ -10,5 +10,5 @@
 body {
   @apply bg-white text-neutral-700;
   font-family: 'Lato';
-  /* background-image: url('notebook.jpg'); */
+  background-image: url('white.jpg');
 }

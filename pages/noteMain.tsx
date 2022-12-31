@@ -41,17 +41,17 @@ const Notes = (props: { notes: any }) => {
         </button>
       </div>
       <div className="flex justify-center">
-        <div className="px-4 font-bold text-2xl">
+        <div className="text-shadow px-4 font-bold text-2xl">
           <button
             onClick={() => {
               deleteNote();
               setCreateView(false);
-              setCreated(false)
+              setCreated(false);
             }}
             className={`${
               !deleteView
-                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
-                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
+                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
+                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
             }`}
           >
             My Notes
@@ -65,8 +65,8 @@ const Notes = (props: { notes: any }) => {
             }}
             className={`${
               !createView
-                ? 'rounded-full px-3 py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg'
-                : 'rounded-full px-3 py-0.5 font-bold bg-gray-300 text-gray-800 text-Lg'
+                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
+                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
             }`}
           >
             Create Note
@@ -74,7 +74,7 @@ const Notes = (props: { notes: any }) => {
         </div>
       </div>
       <div className={`${createView || created ? '' : 'hidden'}`}>
-        <NoteCreate setCreated={setCreated}/>
+        <NoteCreate setCreated={setCreated} />
       </div>
       <div className={`${deleteView ? '' : 'hidden'}`}>
         <NoteDelete notes={notes} />
