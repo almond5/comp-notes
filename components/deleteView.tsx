@@ -3,7 +3,7 @@ import DeleteModal from './deleteModal';
 
 const DeleteView = (props: { notes: any, count: any, counter: any }) => {
   const [deleteView, setDeleteView] = useState(false);
-  const [del, setDeleted] = useState(false)
+  const [del, setDeleted] = useState(false);
   const note = props.notes;
 
   return (
@@ -12,7 +12,7 @@ const DeleteView = (props: { notes: any, count: any, counter: any }) => {
         setDeleteView(!deleteView);
       }}
     >
-      <div className={`${del ? 'hidden' : ''}`}>
+      <div className={`${del ? 'hidden' : 'space-y-6'}`}>
         <div className={`${deleteView ? '' : 'hidden'}`}>
           <DeleteModal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
         </div>

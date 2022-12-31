@@ -17,7 +17,7 @@ const DeleteModal = (props: { notes: any, setDeleted: any, count: any, setCount:
   const handleDelete = async () => {
     const user = session?.user;
     const note = { title, body, user, date };
-    deleteNote(note);
+    await deleteNote(note);
     await timeout(1000);
     props.setDeleted(true)
     props.setCount(props.count + 1)

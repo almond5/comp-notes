@@ -10,7 +10,7 @@ const NoteDelete = (props: { notes: any }) => {
   const [notes, setNotes] = useState(props.notes);
   const [title, setTitle] = useState(false);
   const [date, setDate] = useState(false);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   if (sesh === 'loading') {
     return null;
@@ -69,7 +69,12 @@ const NoteDelete = (props: { notes: any }) => {
     }
   };
 
-  if (notes === null || notes === undefined || notes.length === 0 || count === notes.length)
+  if (
+    notes === null ||
+    notes === undefined ||
+    notes.length === 0 ||
+    count === notes.length
+  )
     return (
       <div className="mb-4 text-lg font-bold flex-col text-center py-24">
         You have no notes!
@@ -78,7 +83,7 @@ const NoteDelete = (props: { notes: any }) => {
   else
     return (
       <>
-      <div
+        <div
           className="top-[11rem] absolute h-[13rem] outline bg-stone-50
             p-5 rounded-lg"
         >
@@ -121,18 +126,24 @@ const NoteDelete = (props: { notes: any }) => {
                 Descending
               </label>
               <div className="py-1"></div>
-              <button className="font-bold rounded-full px-3 py-1 transition hover:bg-gray-300 text-Lg">
+              <button className="font-bold rounded-full px-3 py-1 transition 
+                      hover:bg-gray-300 text-Lg">
                 Apply
               </button>
             </form>
           </div>
         </div>
         <div
-          className="flex-col text-center py-24 mx-auto max-w-sm xs:max-w-sm sm:max-w-md 
-      md:max-w-md lg:max-w-lg xl:max-w-md 2xl:max-w-lg grid gap-6 md:grid-cols-1 lg:grid-cols-1"
+          className="py-[4.75rem] flex-col text-center mx-auto max-w-sm xs:max-w-sm sm:max-w-md 
+          md:max-w-md lg:max-w-lg xl:max-w-md 2xl:max-w-lg grid
+          md:grid-cols-1 lg:grid-cols-1"
         >
           {notes.map((note: any) => (
-            <DeleteView notes={note} count={count} counter={setCount}></DeleteView>
+            <DeleteView
+              notes={note}
+              count={count}
+              counter={setCount}
+            ></DeleteView>
           ))}
         </div>
       </>

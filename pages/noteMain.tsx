@@ -8,7 +8,7 @@ import Leave from '../components/svgs/Leave.svg';
 const Notes = (props: { notes: any }) => {
   const [createView, setCreateView] = useState(false);
   const [deleteView, setDeleteView] = useState(false);
-  const [created, setCreated] = useState(false);
+  const [created, setCreated] = useState(true);
   const { status: sesh } = useSession();
   const notes = props.notes;
 

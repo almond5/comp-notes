@@ -34,9 +34,10 @@ const NoteCreate = (props: { setCreated: any }) => {
     e.preventDefault();
     const user = session?.user;
     const note = { title, body, user };
-    submitNote(note);
+    await submitNote(note);
     await timeout(1000);
-    props.setCreated(true);
+    await props.setCreated(false);
+    window.location.reload()
     setBody('');
     setTitle('');
   };
