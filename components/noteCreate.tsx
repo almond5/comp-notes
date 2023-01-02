@@ -37,7 +37,7 @@ const NoteCreate = (props: { setCreated: any }) => {
     await submitNote(note);
     await timeout(1000);
     await props.setCreated(false);
-    window.location.reload()
+    window.location.reload();
     setBody('');
     setTitle('');
   };
@@ -58,7 +58,8 @@ const NoteCreate = (props: { setCreated: any }) => {
               required
               rows={1}
               cols={45}
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-[0.175rem] 
+              border-neutral-700"
             ></textarea>{' '}
           </div>
 
@@ -72,7 +73,8 @@ const NoteCreate = (props: { setCreated: any }) => {
                 required
                 rows={7}
                 cols={45}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-[0.175rem] 
+                border-neutral-700"
               ></textarea>{' '}
             </div>
           </div>
@@ -80,8 +82,9 @@ const NoteCreate = (props: { setCreated: any }) => {
         <div className="py-[14px]">
           <button>
             <div
-              className="text-lg mx-auto rounded-full w-max border-2 border-gray-800 px-3 py-1 
-                font-bold transition hover:bg-gray-500 hover:text-gray-800"
+              className="mx-auto rounded-[4rem] w-max border-[0.175rem] 
+                border-neutral-700 px-3 py-1 font-bold transition bg-neutral-100 text-lg 
+                hover:bg-neutral-400 hover:text-gray-800"
             >
               Submit
             </div>

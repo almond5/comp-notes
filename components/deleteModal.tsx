@@ -3,7 +3,12 @@ import { FcCheckmark } from 'react-icons/fc';
 import { FcCancel } from 'react-icons/fc';
 import React from 'react';
 
-const DeleteModal = (props: { notes: any, setDeleted: any, count: any, setCount: any }) => {
+const DeleteModal = (props: {
+  notes: any;
+  setDeleted: any;
+  count: any;
+  setCount: any;
+}) => {
   const { data: session } = useSession();
   const note = props.notes;
   const title = note.title;
@@ -19,8 +24,8 @@ const DeleteModal = (props: { notes: any, setDeleted: any, count: any, setCount:
     const note = { title, body, user, date };
     await deleteNote(note);
     await timeout(1000);
-    props.setDeleted(true)
-    props.setCount(props.count + 1)
+    props.setDeleted(true);
+    props.setCount(props.count + 1);
   };
 
   const deleteNote = async (note: {
@@ -45,21 +50,28 @@ const DeleteModal = (props: { notes: any, setDeleted: any, count: any, setCount:
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col justify-center items-center bg-gray-600 bg-opacity-50 z-50 ">
+    <div
+      className="fixed inset-0 flex flex-col justify-center items-center bg-gray-600 
+      bg-opacity-50 z-50 "
+    >
       <div
         className="h-[12rem] outline bg-stone-50
-            p-8 rounded-lg"
+        p-8 rounded-lg"
       >
         <div className="text-center break-all text-xl">
           This note will be deleted:
           <div className="py-4 font-bold break-all">{note.title}</div>
         </div>
-        <button className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg">
+        <button
+          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+        hover:text-gray-800 text-Lg"
+        >
           <FcCancel style={{ fontSize: '40px' }} />
         </button>
         <button
           onClick={() => handleDelete()}
-          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 hover:text-gray-800 text-Lg"
+          className="px-4 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+          hover:text-gray-800 text-Lg"
         >
           <FcCheckmark style={{ fontSize: '40px' }} />
         </button>

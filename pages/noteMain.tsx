@@ -50,8 +50,8 @@ const Notes = (props: { notes: any }) => {
             }}
             className={`${
               !deleteView
-                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
-                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
+                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-100 text-lg hover:bg-neutral-400 hover:text-gray-800'
+                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition text-lg bg-neutral-400 text-gray-800'
             }`}
           >
             My Notes
@@ -65,8 +65,8 @@ const Notes = (props: { notes: any }) => {
             }}
             className={`${
               !createView
-                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
-                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-200 text-lg'
+                ? 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-100 text-lg hover:bg-neutral-400 hover:text-gray-800'
+                : 'mx-auto rounded-[4rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition text-lg bg-neutral-400 text-gray-800'
             }`}
           >
             Create Note
