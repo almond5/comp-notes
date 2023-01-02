@@ -6,7 +6,7 @@ export default function Login() {
     <div className="py-10">
       <div
         className="mx-auto rounded-[4rem] w-max border-[0.25rem] border-neutral-700 px-16 
-        py-2 font-bold transition bg-neutral-100 hover:text-gray-800 text-Lg flex flex-col
+        py-2 font-bold transition bg-neutral-50 hover:text-gray-800 text-Lg flex flex-col
         text-center"
       >
         <div className="flex flex-col py-8 font-semibold text-3xl">

@@ -12,7 +12,7 @@ const DeleteView = (props: { notes: any, count: any, counter: any }) => {
         setDeleteView(!deleteView);
       }}
     >
-      <div className={`${del ? 'hidden' : ''}`}>
+      <div className={`${del ? 'hidden' : 'py-[0.6rem]'}`}>
         <div className={`${deleteView ? '' : 'hidden'}`}>
           <DeleteModal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
         </div>

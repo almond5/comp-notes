@@ -77,14 +77,19 @@ const NoteDelete = (props: { notes: any }) => {
   )
     return (
       <div className="mb-4 text-lg font-bold flex-col text-center py-24">
-        You have no notes!
+        <div
+          className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] 
+                border-neutral-700 px-3 py-1 font-bold transition bg-neutral-50 text-lg"
+        >
+          You have no notes!
+        </div>
       </div>
     );
   else
     return (
       <>
         <div
-          className="top-[11rem] absolute h-[13rem] outline bg-stone-50
+          className="top-[10.25rem] absolute h-[13rem] outline bg-stone-50
             p-5 rounded-lg"
         >
           <div>
@@ -126,8 +131,10 @@ const NoteDelete = (props: { notes: any }) => {
                 Descending
               </label>
               <div className="py-1"></div>
-              <button className="font-bold rounded-full px-3 py-1 transition 
-                      hover:bg-neutral-400 text-Lg">
+              <button
+                className="font-bold rounded-full px-3 py-1 transition 
+                      hover:bg-neutral-400 text-Lg"
+              >
                 Apply
               </button>
             </form>

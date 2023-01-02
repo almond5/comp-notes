@@ -50,7 +50,12 @@ const NoteCreate = (props: { setCreated: any }) => {
         md:max-w-md lg:max-w-md xl:max-w-md 2xl:max-w-md"
         >
           <div className="mb-4 text-lg font-bold">
-            Title:
+            <div
+              className="rounded-[0.175rem] w-max border-l-[0.175rem] border-t-[0.175rem] border-r-[0.175rem] 
+                border-neutral-700 px-2 font-bold transition bg-neutral-300 text-lg"
+            >
+              Title:
+            </div>
             <textarea
               maxLength={45}
               value={title}
@@ -58,13 +63,17 @@ const NoteCreate = (props: { setCreated: any }) => {
               required
               rows={1}
               cols={45}
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-[0.175rem] 
+              className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
               border-neutral-700"
             ></textarea>{' '}
           </div>
-
           <div className="mb-4 text-lg font-bold">
-            Note:
+            <div
+              className="rounded-[0.175rem] w-max border-l-[0.175rem] border-t-[0.175rem] border-r-[0.175rem] 
+                border-neutral-700 px-2 font-bold transition bg-neutral-300 text-lg"
+            >
+              Note:
+            </div>
             <div>
               <textarea
                 maxLength={287}
@@ -73,7 +82,7 @@ const NoteCreate = (props: { setCreated: any }) => {
                 required
                 rows={7}
                 cols={45}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-[0.175rem] 
+                className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
                 border-neutral-700"
               ></textarea>{' '}
             </div>
@@ -81,11 +90,7 @@ const NoteCreate = (props: { setCreated: any }) => {
         </div>
         <div className="py-[14px]">
           <button>
-            <div
-              className="mx-auto rounded-[4rem] w-max border-[0.175rem] 
-                border-neutral-700 px-3 py-1 font-bold transition bg-neutral-100 text-lg 
-                hover:bg-neutral-400 hover:text-gray-800"
-            >
+            <div className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-50 text-lg hover:bg-neutral-400 hover:text-gray-800">
               Submit
             </div>
           </button>
