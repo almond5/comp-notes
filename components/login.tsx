@@ -10,7 +10,7 @@ export default function Login() {
         text-center"
       >
         <div className="flex flex-col py-8 font-semibold text-3xl">
-          Clippy Notes
+          Comp Notes
         </div>
         <div className="py-[8px]">
           <Link
