@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DeleteModal from './deleteModal';
+import Modal from './modal';
 
 const DeleteView = (props: { notes: any, count: any, counter: any }) => {
   const [deleteView, setDeleteView] = useState(false);
@@ -14,7 +14,7 @@ const DeleteView = (props: { notes: any, count: any, counter: any }) => {
     >
       <div className={`${del ? 'hidden' : 'py-[0.6rem]'}`}>
         <div className={`${deleteView ? '' : 'hidden'}`}>
-          <DeleteModal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
+          <Modal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
         </div>
         <div
           className="h-[17rem] outline bg-stone-50

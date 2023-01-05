@@ -56,12 +56,12 @@ const NoteCreate = () => {
               Title:
             </div>
             <textarea
-              maxLength={45}
+              maxLength={30}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
               rows={1}
-              cols={45}
+              cols={1}
               className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
               border-neutral-700"
             ></textarea>{' '}
@@ -75,12 +75,12 @@ const NoteCreate = () => {
             </div>
             <div>
               <textarea
-                maxLength={287}
+                maxLength={240}
                 value={body}
                 onChange={(e) => [setBody(e.target.value)]}
                 required
                 rows={7}
-                cols={45}
+                cols={1}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
                 border-neutral-700"
               ></textarea>{' '}

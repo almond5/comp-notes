@@ -73,7 +73,7 @@ const Notes = (props: { notes: any }) => {
       </div>
       <div className={`${!createView && !deleteView ? 'py-16' : 'hidden'}`}>
         <div className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition text-lg bg-neutral-50 text-gray-800">
-          Welcome to Comp Notes{' '}
+          Welcome to Comp Notes &#x1F603;{' '}
         </div>
       </div>
       <div className={`${createView ? '' : 'hidden'}`}>
