@@ -1,31 +1,63 @@
 import React, { useState } from 'react';
-import Modal from './modal';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import DeleteModal from './deleteModal';
+import EditModal from './editModal';
 
-const DeleteView = (props: { notes: any, count: any, counter: any }) => {
+const DeleteView = (props: { notes: any; count: any; counter: any }) => {
   const [deleteView, setDeleteView] = useState(false);
-  const [del, setDeleted] = useState(false)
+  const [editView, setEditView] = useState(false);
+  const [del, setDeleted] = useState(false);
   const note = props.notes;
 
   return (
-    <button
-      onClick={() => {
-        setDeleteView(!deleteView);
-      }}
-    >
-      <div className={`${del ? 'hidden' : 'py-[0.6rem]'}`}>
-        <div className={`${deleteView ? '' : 'hidden'}`}>
-          <Modal notes={note} setDeleted={setDeleted} count={props.count} setCount={props.counter}/>
-        </div>
-        <div
-          className="h-[17rem] outline bg-stone-50
-            p-7 transition-transform hover:-translate-y-2 rounded-lg"
-        >
-          <div className="text-right break-all">{note.date}</div>
-          <div className="mb-1 text-lg font-bold">{note.title}</div>
-          <p className="mb-4 text-md text-left break-all">{note.note}</p>
-        </div>
+    <div className={`${del ? 'hidden' : 'py-[0.6rem]'}`}>
+      <div className={`${deleteView ? '' : 'hidden'}`}>
+        <DeleteModal
+          setDeleteView={setDeleteView}
+          notes={note}
+          setDeleted={setDeleted}
+          count={props.count}
+          setCount={props.counter}
+        />
       </div>
-    </button>
+      <div className={`${editView ? '' : 'hidden'}`}>
+        <EditModal
+          setEditView={setEditView}
+          notes={note}
+          setDeleted={setDeleted}
+          count={props.count}
+          setCount={props.counter}
+        />
+      </div>
+      <div
+        className="h-[17rem] outline bg-stone-50
+            p-7 rounded-lg"
+      >
+        <div className="flex justify-between">
+          <div>
+            <button
+              className="p-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+          hover:text-gray-800 text-Lg"
+              onClick={() => setEditView(true)}
+            >
+              <FaEdit style={{ fontSize: '25px' }} />
+            </button>
+            <button
+            className="px-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+            hover:text-gray-800 text-Lg"
+              onClick={() => setDeleteView(true)}
+            >
+              <FaTrashAlt style={{ fontSize: '25px' }} />
+            </button>
+          </div>
+
+          <div className="text-right break-all"></div>
+          {note.date}
+        </div>
+        <div className="mb-1 text-lg font-bold">{note.title}</div>
+        <p className="mb-4 text-md text-left break-all">{note.note}</p>
+      </div>
+    </div>
   );
 };
 
