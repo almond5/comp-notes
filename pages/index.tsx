@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Notes from './noteMain';
-import { Note } from '@prisma/client';
 import { getSession, useSession } from 'next-auth/react';
-import Login from '../components/login';
+import LoginView from '../components/loginView';
+import CompNotesView from './compNotesView';
+import React, { useState } from 'react';
+import { Note } from '@prisma/client';
 import prisma from '../lib/prismadb';
 
 export async function getServerSideProps(context: any) {
@@ -40,17 +40,17 @@ export async function getServerSideProps(context: any) {
 
 const Index = ({ notesFromDB }: { notesFromDB: any }) => {
   const [notes] = useState<Note[]>(notesFromDB);
-  const { status: sesh, data } = useSession();
+  const { status: session } = useSession();
 
-  if (sesh === 'loading') {
+  if (session === 'loading') {
     return null;
   }
 
-  if (sesh === 'unauthenticated') {
-    return <Login />;
+  if (session === 'unauthenticated') {
+    return <LoginView />;
   }
 
-  return <Notes notes={notes} />;
+  return <CompNotesView notes={notes} />;
 };
 
 export default Index;
