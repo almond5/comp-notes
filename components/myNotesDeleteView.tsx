@@ -33,14 +33,14 @@ const MyNotesDeleteView = (props: { notes: any; count: any; counter: any }) => {
         <div className="flex justify-between">
           <div>
             <button
-              className="p-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+              className="p-2 rounded-full py-0.5 font-bold transition hover:bg-neutral-400
           hover:text-gray-800 text-Lg"
               onClick={() => setEditModalView(true)}
             >
               <FaEdit style={{ fontSize: '25px' }} />
             </button>
             <button
-            className="px-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+            className="px-2 rounded-full py-0.5 font-bold transition hover:bg-neutral-400
             hover:text-gray-800 text-Lg"
               onClick={() => setDeleteModalView(true)}
             >

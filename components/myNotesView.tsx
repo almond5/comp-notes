@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import DeleteView from './myNotesDeleteView';
+import MyNotesDeleteView from './myNotesDeleteView';
 import Login from './loginView';
 
 const MyNotesView = (props: { notes: any }) => {
@@ -146,11 +146,11 @@ const MyNotesView = (props: { notes: any }) => {
           lg:grid-cols-1"
         >
           {notes.map((note: any) => (
-            <DeleteView
+            <MyNotesDeleteView
               notes={note}
               count={count}
               counter={setCount}
-            ></DeleteView>
+            ></MyNotesDeleteView>
           ))}
         </div>
       </>

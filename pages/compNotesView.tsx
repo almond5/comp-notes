@@ -33,7 +33,7 @@ const CompNotesView = (props: { notes: any }) => {
         <button
           className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] border-neutral-700 font-bold transition bg-neutral-50 text-lg hover:bg-neutral-400 hover:text-gray-800"
           onClick={() =>
-            signOut({ callbackUrl: 'http://localhost:3000/logout' })
+            signOut({ callbackUrl: 'http://localhost:3000/logoutView' })
           }
         >
           <Leave className="w-9" />

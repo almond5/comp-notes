@@ -62,8 +62,8 @@ const CreateNoteView = () => {
               required
               rows={1}
               cols={1}
-              className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
-              border-neutral-700"
+              className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] 
+              rounded-tl-none border-neutral-700"
             ></textarea>{' '}
           </div>
           <div className="mb-4 text-lg font-bold">
@@ -81,15 +81,16 @@ const CreateNoteView = () => {
                 required
                 rows={7}
                 cols={1}
-                className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] rounded-tl-none
-                border-neutral-700"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-neutral-50 rounded-lg border-[0.175rem] 
+                rounded-tl-none border-neutral-700"
               ></textarea>{' '}
             </div>
           </div>
         </div>
         <div className="py-[14px]">
           <button>
-            <div className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition bg-neutral-50 text-lg hover:bg-neutral-400 hover:text-gray-800">
+            <div className="mx-auto rounded-[0.5rem] w-max border-[0.175rem] border-neutral-700 px-3 py-1 font-bold transition
+             bg-neutral-50 text-lg hover:bg-neutral-400 hover:text-gray-800">
               Submit
             </div>
           </button>

@@ -28,13 +28,13 @@ const EditModalView = (props: { setEditModalView: any; notes: any }) => {
             <div className="flex justify-evenly">
               <button
                 onClick={() => handleClose()}
-                className="px-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+                className="px-2 rounded-full py-0.5 font-bold transition hover:bg-neutral-400
         hover:text-gray-800 text-Lg"
               >
                 <FcCancel style={{ fontSize: '40px' }} />
               </button>
               <button
-                className="px-2 rounded-full py-0.5 font-bold transition hover:bg-gray-300 
+                className="px-2 rounded-full py-0.5 font-bold transition hover:bg-neutral-400
           hover:text-gray-800 text-Lg"
                 onClick={() => setNotesEditModalView(!noteEditModalView)}
               >
@@ -48,7 +48,7 @@ const EditModalView = (props: { setEditModalView: any; notes: any }) => {
       <div className={`${noteEditModalView ? '' : 'hidden'}`}>
         <NoteEditModalView
           setEditView={undefined}
-          notes={undefined}
+          notes={props.notes}
         ></NoteEditModalView>
       </div>
     </>
